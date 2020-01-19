@@ -1,6 +1,6 @@
 // dependencies
 let express = require("express");
-// let path = require("path");
+let cookieParser = require("cookie-parser");
 
 //create the express server
 let app = express();
@@ -11,6 +11,7 @@ let PORT = process.env.PORT || 8080;
 //set up express app to handle data parsing
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(cookieParser());
 
 // app.use(express.static("app/public"));
 //Routes
