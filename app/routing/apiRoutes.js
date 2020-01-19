@@ -26,16 +26,16 @@ module.exports = function(app) {
     let totalDifference;
 
     //loop looks at every index in the array | answers is an array of integers
-    for (var i = 0; i < friends.length; i++) {
-      var currentFriend = friends[i];
+    for (let i = 0; i < friends.length; i++) {
+      let currentFriend = friends[i];
       totalDifference = 0;
 
       console.log(currentFriend.name);
 
       //next loop is for the friend scores
-      for (var j = 0; j < currentFriend.scores.length; j++) {
-        var currentFriendScore = currentFriend.scores[j];
-        var currentUserScore = userScores[j];
+      for (let j = 0; j < currentFriend.scores.length; j++) {
+        let currentFriendScore = currentFriend.scores[j];
+        let currentUserScore = userScores[j];
 
         // We calculate the difference between the scores and sum them into the totalDifference
         totalDifference += Math.abs(
