@@ -1,0 +1,10 @@
+.junbotron {
+  height: 100%;
+  background-image: url("/app/public/assets/images/catBluestEye.jpg");
+  background-size: cover;
+}
+
+.copyBox {
+  background-color: #038dee;
+  opacity: 8;
+}
