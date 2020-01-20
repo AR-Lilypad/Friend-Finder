@@ -1,3 +1,5 @@
+//dependencies
+var path = require("path");
 const friends = require("../data/friends.js");
 
 module.exports = function(app) {
@@ -10,51 +12,52 @@ module.exports = function(app) {
 
   // Post route is for user results once survey completed
   app.post("/api/friends", function(req, res) {
-    let bestMatch = {
+    let friendFinder = {
       name: "",
       photo: "",
-      lowestDiff: 1000
+      userDifference: 1000
     };
 
-    //user takes survey + taking in info from user
     let userData = req.body;
-    //setting up the object  (shortcuts)
-
-    let userScores = userData.scores;
+    let userInputScores = userData.scores;
     // let userPhoto = userData.photo;
+
+    //user takes survey + taking in info from user
+    //setting up the object  (shortcuts)
+    // matchName = "";
+    // let matchImage = "";
+    // let totalDifference = 1000; //setting large comparison base
 
     let totalDifference;
 
-    //loop looks at every index in the array | answers is an array of integers
+    //loop looks at every index in the friendsJS array
     for (let i = 0; i < friends.length; i++) {
-      let currentFriend = friends[i];
+      let newest = friends[i];
       totalDifference = 0;
 
-      console.log(currentFriend.name);
+      console.log(newest.name);
 
-      //next loop is for the friend scores
-      for (let j = 0; j < currentFriend.scores.length; j++) {
-        let currentFriendScore = currentFriend.scores[j];
-        let currentUserScore = userScores[j];
+      //next loop checks user scores with friends scores
+      for (let j = 0; j < newest.scores.length; j++) {
+        // We calculate the difference between the scores and sum them into the friendFinder
+        let newestScore = newest.scores[j];
+        let currentUserScore = userInputScores[j];
 
-        // We calculate the difference between the scores and sum them into the totalDifference
         totalDifference += Math.abs(
-          parseInt(currentUserScore) - parseInt(currentFriendScore)
+          parseInt(currentUserScore) - parseInt(newestScore)
         );
       }
 
-      // If the sum of differences is less then the differences of the current "best match"
-      if (totalDifference <= bestMatch.friendDifference) {
-        // Reset the bestMatch to be the new friend.
-        bestMatch.name = currentFriend.name;
-        bestMatch.photo = currentFriend.photo;
-        bestMatch.friendDifference = totalDifference;
+      if (totalDifference <= friendFinder.userDifference) {
+        // reset friendFinder to be the new friend
+        friendFinder.name = newest.name;
+        friendFinder.photo = newest.photo;
+        friendFinder.userDifference = totalDifference;
       }
     }
 
+    // push the difference into the array
     friends.push(userData);
-
-    // Return a JSON with the user's bestMatch. This will be used by the HTML in the next page
-    res.json(bestMatch);
+    res.json(friendFinder);
   });
 };
