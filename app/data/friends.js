@@ -1,6 +1,6 @@
 let friends = [
   {
-    name: "Chopper",
+    name: "Boomer",
     photo:
       "https://www.telegraph.co.uk/content/dam/news/2016/06/20/101167774_A_biker_shows_his_12-year-old_cat_Chiquinho_-which_always_rides_with_him_on_his_motorbike-_trans_NvBQzQNjv4BqpVlberWd9EgFPZtcLiMQf1X_50byq9Ah3wJAV0YS_Ms.jpg?imwidth=450",
     scores: [5, 1, 4, 4, 5, 1, 2, 5, 4, 4]
@@ -30,7 +30,7 @@ let friends = [
     scores: [5, 1, 4, 4, 5, 1, 2, 5, 4, 4]
   },
   {
-    name: "Boomer",
+    name: "Chopper",
     photo:
       "http://ae01.alicdn.hcom/kf/HTB1zhH1eaagSKJjy0Fcq6AZeVXal.jpg?size=189941&height=800&width=800&hash=a82a98b059f198818052192b2f41cc72",
     scores: [5, 1, 4, 4, 5, 1, 2, 5, 4, 4]
